@@ -1,42 +1,41 @@
-# Compiler
-CC = g++
-
-# Compiler flags
-CFLAGS = -Wall -Wextra -std=c++23
+# Compiler and flags
+CC = gcc
+CFLAGS = -Wall
 
 # Source files directory
-SRCDIR = src
-
-# Source files
-SRCS = $(wildcard $(SRCDIR)/*.cpp)
+SRC_DIR = src
+SETTINGS_DIR = $(SRC_DIR)/settings
 
 # Object files directory
-OBJDIR = build
+OBJ_DIR = build
 
-# Object files
-OBJS = $(patsubst $(SRCDIR)/%.cpp,$(OBJDIR)/%.obj,$(SRCS))
+# Resource files directory
+RES_DIR = $(SETTINGS_DIR)
 
 # Executable name
-EXEC = $(OBJDIR)/screensaver.scr
+EXEC = my_screensaver.exe
 
-# Default target
-all: $(EXEC)
+# Source files
+SRCS = $(wildcard $(SRC_DIR)/*.cpp)
+OBJS = $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SRCS))
 
-# Create build directory if it doesn't exist
-$(OBJDIR):
-	mkdir -p $(OBJDIR)
+# Resource files
+RES_FILES = $(wildcard $(RES_DIR)/*.rc)
+RES_OBJS = $(patsubst $(RES_DIR)/%.rc,$(OBJ_DIR)/%.res,$(RES_FILES))
 
-# Rule to compile .cpp files to .obj files
-$(OBJDIR)/%.obj: $(SRCDIR)/%.cpp | $(OBJDIR)
-	$(CC) $(CFLAGS) -c $< -o $@
+# Build executable
+$(EXEC): $(OBJS) $(RES_OBJS)
+    $(CC) $(OBJS) $(RES_OBJS) -o $@ -lgdi32
 
-# Rule to link object files into the screensaver
-$(EXEC): $(OBJS)
-	$(CC) $(OBJS) -o $@ -lgdi32
+# Compile C++ source files
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+    $(CC) $(CFLAGS) -c $< -o $@
 
-# Clean up build directory and screensaver file
+# Compile resource files
+$(OBJ_DIR)/%.res: $(RES_DIR)/%.rc
+    windres $< -O coff -o $@
+
+.PHONY: clean
+
 clean:
-	rm $(OBJDIR)/*
-
-# Phony targets
-.PHONY: all clean
+    rm -f $(OBJ_DIR)/*.o $(OBJ_DIR)/*.res $(EXEC)

@@ -11,6 +11,7 @@
 #include <windows.h>
 #include <time.h>
 #include <string>
+#include "settings/settings.rc"
 
 
 // global variables
@@ -51,9 +52,12 @@ BOOL WINAPI RegisterDialogClasses(
     HANDLE hInst
 );
 
+
+
+/*settings*/
 // dialog procedure for settings function
 BOOL CALLBACK SettingsDialogProc(
-    HWND hwnd,
+    HWND hwnd, 
     UINT message, 
     WPARAM wParam, 
     LPARAM lParam
