@@ -39,3 +39,7 @@ LRESULT ScreenSaverProc(
     WPARAM wParam,
     LPARAM lParam
 );
+
+BOOL WINAPI RegisterDialogClasses(
+    HANDLE hInst
+);

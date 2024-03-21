@@ -4,38 +4,39 @@ CC = g++
 # Compiler flags
 CFLAGS = -Wall -Wextra -std=c++23
 
+# Source files directory
+SRCDIR = src
+
 # Source files
-# SRCS = def_screen_saver_proc.cpp register_dialog_classes.cpp screen_saver_configure_dialog.cpp screen_saver_proc.cpp
-SRCS = src/*
+SRCS = $(wildcard $(SRCDIR)/*.cpp)
+
+# Object files directory
+OBJDIR = build
 
 # Object files
-OBJS = $(addprefix build/obj/,$(SRCS:.cpp=.o))
+OBJS = $(patsubst $(SRCDIR)/%.cpp,$(OBJDIR)/%.obj,$(SRCS))
 
 # Executable name
-EXEC = build/exe/screensaver.src
+EXEC = $(OBJDIR)/screensaver.scr
 
 # Default target
-all: build/exe/ $(EXEC)
+all: $(EXEC)
 
 # Create build directory if it doesn't exist
-build:
-	mkdir -p build/obj
-	cd build
-	mkdir exe
+$(OBJDIR):
+	mkdir -p $(OBJDIR)
 
-# Rule to compile .cpp files to .o files
-build/obj/%.o: %.cpp
+# Rule to compile .cpp files to .obj files
+$(OBJDIR)/%.obj: $(SRCDIR)/%.cpp | $(OBJDIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# Rule to link object files into the executable
-$(EXEC): build $(OBJS)
+# Rule to link object files into the screensaver
+$(EXEC): $(OBJS)
 	$(CC) $(OBJS) -o $@ -lgdi32
 
-# Clean up build directory and executable
+# Clean up build directory and screensaver file
 clean:
-	rm -rf build/obj/*
-	rm -rf build/exe/*
-	rm -f $(EXEC)
+	rm -rf $(OBJDIR)
 
 # Phony targets
 .PHONY: all clean
