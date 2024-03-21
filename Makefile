@@ -36,7 +36,7 @@ $(EXEC): $(OBJS)
 
 # Clean up build directory and screensaver file
 clean:
-	rm -rf $(OBJDIR)
+	rm $(OBJDIR)/*
 
 # Phony targets
 .PHONY: all clean

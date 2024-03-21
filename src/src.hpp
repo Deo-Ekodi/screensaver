@@ -12,6 +12,13 @@
 #include <time.h>
 #include <string>
 
+
+// global variables
+int g_setting1 = 0;
+bool g_setting2 = false;
+
+
+// function declarations
 LRESULT ScreenSaverProc(
     HWND   hWnd,              /*identifier of window*/
     UINT   message,           /*message to window*/
@@ -42,4 +49,12 @@ LRESULT ScreenSaverProc(
 
 BOOL WINAPI RegisterDialogClasses(
     HANDLE hInst
+);
+
+// dialog procedure for settings function
+BOOL CALLBACK SettingsDialogProc(
+    HWND hwnd,
+    UINT message, 
+    WPARAM wParam, 
+    LPARAM lParam
 );
