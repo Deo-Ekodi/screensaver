@@ -25,17 +25,17 @@ RES_OBJS = $(patsubst $(RES_DIR)/%.rc,$(OBJ_DIR)/%.res,$(RES_FILES))
 
 # Build executable
 $(EXEC): $(OBJS) $(RES_OBJS)
-    $(CC) $(OBJS) $(RES_OBJS) -o $@ -lgdi32
+	$(CC) $(OBJS) $(RES_OBJS) -o $@ -lgdi32
 
 # Compile C++ source files
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
-    $(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 # Compile resource files
 $(OBJ_DIR)/%.res: $(RES_DIR)/%.rc
-    windres $< -O coff -o $@
+	windres $< -O coff -o $@
 
 .PHONY: clean
 
 clean:
-    rm -f $(OBJ_DIR)/*.o $(OBJ_DIR)/*.res $(EXEC)
+	rm -f $(OBJ_DIR)/*.o $(OBJ_DIR)/*.res $(EXEC)
