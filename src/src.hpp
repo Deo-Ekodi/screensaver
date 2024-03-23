@@ -9,10 +9,20 @@
 */
 
 #include <Windows.h>
+#include <winres.h>
 #include <time.h>
 #include <string>
 
-#include "settings/settings.rc"
+// #include "settings/settings.rc"
+
+// Define resource identifiers
+#define IDD_SETTINGS_DIALOG  101
+#define IDC_BROWSE_BUTTON    102
+#define IDC_SELECTED_FILE_EDIT 103
+#define IDC_PREVIEW_BUTTON   104
+#define IDC_PHOTO_RADIO      105
+#define IDC_VIDEO_RADIO      106
+#define IDC_SLIDESHOW_RADIO  107
 
 
 // global variables
@@ -64,9 +74,11 @@ BOOL CALLBACK SettingsDialogProc(
     LPARAM lParam
 );
 
-// #define IDD_SETTINGS_DIALOG     1
-// #define IDC_TIME_DISPLAY        2
-// #define IDC_DATE_DISPLAY        3
-// #define IDC_COLOR_COMBO         4
-// #define IDC_REMINDER_CHECK      5
-// #define IDC_REMINDER_EDIT       6
+INT_PTR CALLBACK DialogProc(
+    HWND hwnd, 
+    UINT message, 
+    WPARAM wParam, 
+    LPARAM lParam
+);
+
+
