@@ -13,7 +13,7 @@ OBJ_DIR = build
 RES_DIR = $(SETTINGS_DIR)
 
 # Executable name
-EXEC = my_screensaver.exe
+EXEC = my_screensaver.scr
 
 # Source files
 SRCS = $(wildcard $(SRC_DIR)/*.cpp)

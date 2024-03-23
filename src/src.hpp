@@ -9,7 +9,6 @@
 */
 
 #include <Windows.h>
-#include <winres.h>
 #include <time.h>
 #include <string>
 
