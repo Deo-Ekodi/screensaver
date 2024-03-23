@@ -13,7 +13,7 @@ OBJ_DIR = build
 RES_DIR = $(SETTINGS_DIR)
 
 # Executable name
-EXEC = my_screensaver.exe
+EXEC = my_screensaver.scr
 
 # Source files
 SRCS = $(wildcard $(SRC_DIR)/*.cpp)
@@ -33,9 +33,18 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 
 # Compile resource files
 $(OBJ_DIR)/%.res: $(RES_DIR)/%.rc
-	windres $< -O coff -o $@
+	windres -v $< -o $@
+# 	windres build/settings.res -o src/settings/settings.rc 
+
+# $(OBJ_DIR)/%.res: $(RES_DIR)/%.rc
+# 	windres $< -O coff -o $@
+
+# $(OBJ_DIR)/%.res: $(RES_DIR)/%.rc
+# #	windres $< -O res -o $@
+# 	windres -v --no-use-temp-file -i src/settings/settings.rc -o build/settings.res  
+
 
 .PHONY: clean
 
 clean:
-	rm build/*
+	pwd

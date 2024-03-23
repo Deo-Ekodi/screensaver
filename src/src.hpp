@@ -9,11 +9,10 @@
 */
 
 #include <Windows.h>
-#include <winres.h>
+#include <winresrc.h>
 #include <time.h>
-#include <string>
-
-// #include "settings/settings.rc"
+#include <string.h>
+// #include "resource.hpp"
 
 // Define resource identifiers
 #define IDD_SETTINGS_DIALOG  101
@@ -23,7 +22,6 @@
 #define IDC_PHOTO_RADIO      105
 #define IDC_VIDEO_RADIO      106
 #define IDC_SLIDESHOW_RADIO  107
-
 
 // global variables
 int g_setting1 = 0;
