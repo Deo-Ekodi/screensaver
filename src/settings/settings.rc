@@ -1,19 +1,36 @@
 #include <windows.h>
+#include <winres.h>
 
-#define IDD_SETTINGS_DIALOG 101
+#define IDD_SETTINGS_DIALOG     101
+#define IDC_TIME_DISPLAY        102
+#define IDC_DATE_DISPLAY        103
+#define IDC_COLOR_COMBO         104
+#define IDC_REMINDER_CHECK      105
+#define IDC_REMINDER_EDIT       106
 
-
-IDD_SETTINGS_DIALOG DIALOGEX 80, 80, 200, 100
+// Dialog template
+IDD_SETTINGS_DIALOG DIALOGEX 80, 80, 400, 200
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Settings"
 FONT 8, "MS Sans Serif"
 
 BEGIN
-    // Add controls for settings dialog
-    PUSHBUTTON "OK", IDOK, 100, 70, 50, 20
-    PUSHBUTTON "Cancel", IDCANCEL, 160, 70, 50, 20
-    CONTROL "Setting 1:", -1, "STATIC", SS_LEFTNOWORDWRAP | WS_CHILD | WS_VISIBLE, 10, 10, 80, 20
-    EDITTEXT IDC_SETTING1_EDIT, 90, 10, 100, 20, ES_NUMBER | WS_BORDER | WS_TABSTOP
-    CONTROL "Setting 2:", -1, "STATIC", SS_LEFTNOWORDWRAP | WS_CHILD | WS_VISIBLE, 10, 40, 80, 20
-    AUTOCHECKBOX "Checkbox", IDC_SETTING2_CHECK, 90, 40, 100, 20
+    // Time display
+    CONTROL "", IDC_TIME_DISPLAY, "STATIC", SS_LEFT | WS_CHILD | WS_VISIBLE, 10, 10, 380, 40
+
+    // Date display
+    CONTROL "", IDC_DATE_DISPLAY, "STATIC", SS_LEFT | WS_CHILD | WS_VISIBLE, 10, 50, 200, 20
+
+    // Font color selection
+    LTEXT "Font Color:", -1, 220, 50, 80, 20
+    COMBOBOX IDC_COLOR_COMBO, 300, 50, 80, 100, CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    // You can populate the color combo box with options here
+
+    // Reminder option
+    CONTROL "Enable Reminder", IDC_REMINDER_CHECK, "BUTTON", BS_AUTOCHECKBOX | WS_CHILD | WS_VISIBLE, 10, 80, 150, 20
+    EDITTEXT , 170, 80, 220, 20, ES_AUTOHSCROLL | WS_BORDER | WS_DISABLED | WS_CHILD | WS_VISIBLE
+
+    // OK and Cancel buttons
+    PUSHBUTTON "OK", IDOK, 150, 160, 80, 20
+    PUSHBUTTON "Cancel", IDCANCEL, 240, 160, 80, 20
 END

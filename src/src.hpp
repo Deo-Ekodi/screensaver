@@ -8,9 +8,10 @@
  * 04.  RegisterDialogClasses
 */
 
-#include <windows.h>
+#include <Windows.h>
 #include <time.h>
 #include <string>
+
 #include "settings/settings.rc"
 
 
@@ -62,3 +63,10 @@ BOOL CALLBACK SettingsDialogProc(
     WPARAM wParam, 
     LPARAM lParam
 );
+
+// #define IDD_SETTINGS_DIALOG     1
+// #define IDC_TIME_DISPLAY        2
+// #define IDC_DATE_DISPLAY        3
+// #define IDC_COLOR_COMBO         4
+// #define IDC_REMINDER_CHECK      5
+// #define IDC_REMINDER_EDIT       6

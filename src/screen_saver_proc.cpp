@@ -10,11 +10,12 @@ LRESULT ScreenSaverProc(
     static HFONT hFont;
     static RECT rect;
     static TCHAR szTime[9];
-    static TCHAR szDate[64];
     static SYSTEMTIME sysTime;
+/*
+    static TCHAR szDate[64];
     static time_t t;
     static struct tm * timeinfo;
-
+*/
     switch (message)
     {
     case WM_CREATE:

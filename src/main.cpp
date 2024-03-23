@@ -52,8 +52,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     //     DispatchMessage(&msg);
     // }
     // Perform cleanup and shutdown
-
+// uncomment below
+/**/
     DialogBox(hInstance, MAKEINTRESOURCE(IDD_CONFIG_DIALOG), NULL, ScreenSaverConfigureDialog);
-    
+/**/  
     return 0;
 }

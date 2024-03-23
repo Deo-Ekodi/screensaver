@@ -1,6 +1,6 @@
 # Compiler and flags
 CC = gcc
-CFLAGS = -Wall
+CFLAGS = -Wall -std=c++23
 
 # Source files directory
 SRC_DIR = src
@@ -38,4 +38,4 @@ $(OBJ_DIR)/%.res: $(RES_DIR)/%.rc
 .PHONY: clean
 
 clean:
-	rm -f $(OBJ_DIR)/*.o $(OBJ_DIR)/*.res $(EXEC)
+	rm build/*

@@ -21,10 +21,12 @@ BOOL WINAPI ScreenSaverConfigureDialog(HWND hDlg, UINT message, WPARAM wParam, L
                     // Cancel changes and close the dialog
                     EndDialog(hDlg, FALSE);
                     return TRUE;
-                case DIALOGEX:
+/**/
+                case IDD_SETTINGS_DIALOG:
                     // Show the settings dialog
                     DialogBox(GetModuleHandle(NULL), MAKEINTRESOURCE(IDD_SETTINGS_DIALOG), hDlg, SettingsDialogProc);
                     return TRUE;
+/**/
             }
             break;
     }
