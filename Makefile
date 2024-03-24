@@ -1,6 +1,7 @@
 # Compiler and flags
 CC = gcc
-CFLAGS = -Wall -std=c++23
+# CC = clang
+CFLAGS = -Wall -std=c++17
 
 # Source files directory
 SRC_DIR = src
