@@ -9,7 +9,10 @@
 */
 
 #include <Windows.h>
+<<<<<<< HEAD
 #include <winresrc.h>
+=======
+>>>>>>> da74787d978c35028a0705257adc7ea14d0db881
 #include <time.h>
 #include <string.h>
 // #include "resource.hpp"
