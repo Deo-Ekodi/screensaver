@@ -8,27 +8,24 @@
  * 04.  RegisterDialogClasses
 */
 
-#include <Windows.h>
-<<<<<<< HEAD
-#include <winresrc.h>
-=======
->>>>>>> da74787d978c35028a0705257adc7ea14d0db881
+// #include <Windows.h>
+#include <windows.h>
 #include <time.h>
 #include <string.h>
-// #include "resource.hpp"
+#include "settings/res.hpp"
 
 // Define resource identifiers
-#define IDD_SETTINGS_DIALOG  101
-#define IDC_BROWSE_BUTTON    102
-#define IDC_SELECTED_FILE_EDIT 103
-#define IDC_PREVIEW_BUTTON   104
-#define IDC_PHOTO_RADIO      105
-#define IDC_VIDEO_RADIO      106
-#define IDC_SLIDESHOW_RADIO  107
+// #define IDD_SETTINGS_DIALOG  101
+// #define IDC_BROWSE_BUTTON    102
+// #define IDC_SELECTED_FILE_EDIT 103
+// #define IDC_PREVIEW_BUTTON   104
+// #define IDC_PHOTO_RADIO      105
+// #define IDC_VIDEO_RADIO      106
+// #define IDC_SLIDESHOW_RADIO  107
 
 // global variables
-int g_setting1 = 0;
-bool g_setting2 = false;
+// int g_setting1 = 0;
+// bool g_setting2 = false;
 
 
 // function declarations
