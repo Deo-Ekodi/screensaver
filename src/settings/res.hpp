@@ -20,3 +20,16 @@
 #ifndef IDC_STATIC
 #define IDC_STATIC          110
 #endif
+
+#define IDC_LTEXT_EDITTEXT      111
+#define IDC_LTEXT_PHOTO         112
+#define IDC_LTEXT_VIDEO         113
+#define IDC_LTEXT_SLIDESHOW     114
+#define IDC_LTEXT_FINAL         115
+#define IDC_LTEXT_COLOR         116
+#define IDC_LTEXT_BGBUTTON      117
+
+#define IDC_WEATHER_PARAM       118
+#define IDC_TEMPERATURE_PARAM   119
+
+#define IDC_SETTINGS           120

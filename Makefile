@@ -26,7 +26,7 @@ RES_OBJS = $(patsubst $(RES_DIR)/%.rc,$(OBJ_DIR)/%.res,$(RES_FILES))
 
 # Build executable
 $(EXEC): $(OBJS) $(RES_OBJS)
-	$(CC) $(OBJS) $(RES_OBJS) -o $@ -lgdi32
+	$(CC) $(OBJS) $(RES_OBJS) -o $@ -lgdi32 -lcomdlg32 -lstdc++
 
 # Compile C++ source files
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
@@ -44,8 +44,12 @@ $(OBJ_DIR)/%.res: $(RES_DIR)/%.rc
 # #	windres $< -O res -o $@
 # 	windres -v --no-use-temp-file -i src/settings/settings.rc -o build/settings.res  
 
+copy_res:
+	powershell -Command "Copy-Item -Path my_screensaver.scr -Destination C:\Windows\System32 -Force"
+# &(_FINALDIR) : $(_RESDIR)/%.scr
+# 	cp $(_RESDIR)/%.scr $(_FINALDIR)
 
 .PHONY: clean
 
 clean:
-	pwd
+	rm build/*
