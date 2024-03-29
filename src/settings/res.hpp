@@ -16,3 +16,7 @@
 #ifndef IDCANCEL
 #define IDCANCEL            109
 #endif
+
+#ifndef IDC_STATIC
+#define IDC_STATIC          110
+#endif

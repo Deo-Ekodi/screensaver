@@ -38,7 +38,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 # 	windres build/settings.res -o src/settings/settings.rc 
 
 $(OBJ_DIR)/%.res: $(RES_DIR)/%.rc
-	windres $< -O coff -o $@
+	windres -v $< -O coff -o $@
 
 # $(OBJ_DIR)/%.res: $(RES_DIR)/%.rc
 # #	windres $< -O res -o $@

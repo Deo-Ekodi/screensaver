@@ -2,4 +2,4 @@ g++ -o saver.scr saver.o saver.res -lgdi32 -luser32 -lmingw32
 windres settings.rc -O coff saver.res
 
 g++ -o saver.scr build/*.o src/settings/saver.res -lgdi32 -luser32 -lmingw32
-g++ -o src/build*.cpp build/*.o -lgdi32 -luser32 -lmingw32
+g++ -o src/*.cpp build/*.o -lgdi32 -luser32 -lmingw32

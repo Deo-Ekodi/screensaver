@@ -6,7 +6,7 @@ INT_PTR CALLBACK DialogProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lPara
     switch (message)
     {
     case WM_INITDIALOG:
-        // Initialize dialog controls or data here
+        // Initialize dialog controls or data
         return TRUE; // Return TRUE to set the focus to the first control
     case WM_COMMAND:
         switch (LOWORD(wParam))
