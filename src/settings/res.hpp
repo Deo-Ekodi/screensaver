@@ -8,3 +8,11 @@
 #define IDC_PHOTO_RADIO      105
 #define IDC_VIDEO_RADIO      106
 #define IDC_SLIDESHOW_RADIO  107
+
+#ifndef IDOK
+#define IDOK                108
+#endif
+
+#ifndef IDCANCEL
+#define IDCANCEL            109
+#endif

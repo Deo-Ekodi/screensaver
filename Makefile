@@ -33,12 +33,12 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # Compile resource files
-$(OBJ_DIR)/%.res: $(RES_DIR)/%.rc
-	windres -v $< -o $@
+# $(OBJ_DIR)/%.res: $(RES_DIR)/%.rc
+# 	windres -v $< -o $@
 # 	windres build/settings.res -o src/settings/settings.rc 
 
-# $(OBJ_DIR)/%.res: $(RES_DIR)/%.rc
-# 	windres $< -O coff -o $@
+$(OBJ_DIR)/%.res: $(RES_DIR)/%.rc
+	windres $< -O coff -o $@
 
 # $(OBJ_DIR)/%.res: $(RES_DIR)/%.rc
 # #	windres $< -O res -o $@
