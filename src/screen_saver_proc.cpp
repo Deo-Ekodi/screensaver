@@ -1,5 +1,9 @@
 #include "src.hpp"
 
+/**
+ * incomplete
+*/
+
 LRESULT ScreenSaverProc(
     HWND   hWnd,              /*identifier of window*/
     UINT   message,           /*message to window*/
@@ -11,15 +15,15 @@ LRESULT ScreenSaverProc(
     static RECT rect;
     static TCHAR szTime[9];
     static SYSTEMTIME sysTime;
-/*
-    static TCHAR szDate[64];
-    static time_t t;
-    static struct tm * timeinfo;
-*/
+
     switch (message)
     {
     case WM_CREATE:
         // Create a font for the clock
+        /**
+         * Retrieve any initialization data from the Regedit.ini file. 
+         * Set a window timerfor the screen saver window. Perform any other required initialization.
+        */
         hFont = CreateFont(40, 0, 0, 0, FW_BOLD, FALSE, FALSE, FALSE, DEFAULT_CHARSET, OUT_OUTLINE_PRECIS,
                            CLIP_DEFAULT_PRECIS, CLEARTYPE_QUALITY, VARIABLE_PITCH, TEXT("Arial"));
         SetTimer(hWnd, 1, 1000, NULL); // Set a timer to update the clock every second
@@ -27,6 +31,9 @@ LRESULT ScreenSaverProc(
 
     case WM_TIMER:
         // Get the system time and format it as a string
+        /**
+         * Perform drawing operations.
+        */
         GetLocalTime(&sysTime);
         wsprintf(szTime, TEXT("%.2d:%.2d:%.2d"), sysTime.wHour, sysTime.wMinute, sysTime.wSecond);
 
@@ -51,8 +58,37 @@ LRESULT ScreenSaverProc(
         }
         break;
 
+    case WM_ERASEBKGND:
+            // The WM_ERASEBKGND message is issued before the 
+            // WM_TIMER message, allowing the screen saver to 
+            // paint the background as appropriate.
+        break;
+
+    case WM_SETCURSOR:
+        /**
+         * Set the cursor to the null cursor, removing it from the screen.
+        */
+        break;
+    
+    /**
+     * cases to terminate screensaver
+    */
+
+    case WM_LBUTTONDOWN:
+    case WM_MBUTTONDOWN:
+    case WM_RBUTTONDOWN:
+    case WM_KEYDOWN:
+    case WM_MOUSEMOVE:
+
+    /**
+     * end of cases to terminate screensaver
+    */
+
     case WM_DESTROY:
         // Clean up resources
+        /**
+         * Perform any additional required cleanup.
+        */
         KillTimer(hWnd, 1);
         DeleteObject(hFont);
         PostQuitMessage(0);

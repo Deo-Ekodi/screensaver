@@ -33,3 +33,4 @@
 #define IDC_TEMPERATURE_PARAM   119
 
 #define IDC_SETTINGS           120
+#define IDC_PREV_CLOCK          121

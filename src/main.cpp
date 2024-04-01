@@ -1,5 +1,10 @@
 #include "src.hpp"
 
+/**
+ * fix:
+ * invisible window .. WM_VIVIBLE
+*/
+
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
     // uunreferenced parameters
@@ -8,28 +13,54 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     UNREFERENCED_PARAMETER(nCmdShow);
 
     // Register the window class for the screensaver
-    WNDCLASS cls = {}; 
-    cls.hCursor        = NULL; 
-    cls.hIcon          = LoadIcon(hInstance, MAKEINTATOM(ID_APP)); 
-    cls.lpszMenuName   = NULL; 
-    cls.lpszClassName  = "WindowsScreenSaverClass"; 
-    // cls.hbrBackground  = GetStockObject(BLACK_BRUSH); 
-    cls.hInstance      = hInstance; 
-    cls.style          = CS_VREDRAW  | CS_HREDRAW | CS_SAVEBITS | CS_DBLCLKS; 
-    cls.lpfnWndProc    = (WNDPROC) ScreenSaverProc; 
-    cls.cbWndExtra     = 0; 
-    cls.cbClsExtra     = 0;
+    WNDCLASS wc;
+    wc.style = CS_HREDRAW | CS_VREDRAW;
+    wc.lpfnWndProc = ScreenSaverProc;
+    // wc.lpfnWndProc = DialogProc;
+    wc.cbClsExtra = 0;
+    wc.cbWndExtra = 0;
+    wc.hInstance = hInstance;
+    wc.hIcon = LoadIcon(NULL, IDI_APPLICATION);
+    wc.hCursor = LoadCursor(NULL, IDC_ARROW);
+    wc.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
+    wc.lpszMenuName = NULL;
+    wc.lpszClassName = TEXT("MyScreenSaverClass");
 
-    RegisterClass(&cls);
-
-    if (!RegisterClass(&cls))
+    if (!RegisterClass(&wc))
     {
-        // Handle registration failure
-        return 1;
+        MessageBox(NULL, TEXT("Window Registration Failed!"), TEXT("Error!"), MB_ICONERROR);
+        return 0;
     }
 
-    DialogBox(hInstance, MAKEINTRESOURCE(IDD_SETTINGS_DIALOG), NULL, DialogProc);
-    // DialogBox(hInstance, MAKEINTRESOURCE(IDD_CONFIG_DIALOG), NULL, ScreenSaverConfigureDialog);
-/**/  
-    return 0;
+    // Create window
+    HWND hwnd = CreateWindowEx(
+        0,                              // Optional window styles
+        TEXT("MyScreenSaverClass"),     // Window class
+        TEXT("My Screen Saver"),        // Window title
+        WS_POPUP | WS_VISIBLE,          // Window style (fullscreen and visible)
+        0, 0,                           // Initial position (top-left corner)
+        GetSystemMetrics(SM_CXSCREEN),  // Width of the screen
+        GetSystemMetrics(SM_CYSCREEN),  // Height of the screen
+        NULL,                           // Parent window
+        NULL,                           // Menu
+        hInstance,                      // Instance handle
+        NULL                            // Additional application data
+    );
+
+    if (!hwnd)
+    {
+        MessageBox(NULL, TEXT("Window Creation Failed!"), TEXT("Error!"), MB_ICONERROR);
+        return 0;
+    }
+
+    // Enter message loop
+    MSG msg;
+    while (GetMessage(&msg, NULL, 0, 0))
+    {
+        TranslateMessage(&msg);
+        DispatchMessage(&msg);
+    }
+
+    // return msg.wParam;
+    return DialogBox(GetModuleHandle(NULL), MAKEINTRESOURCE(IDD_SETTINGS_DIALOG), hwnd, DialogProc);
 }
