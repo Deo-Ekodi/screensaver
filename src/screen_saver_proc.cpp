@@ -1,6 +1,7 @@
 #include "src.hpp"
 
 /**
+ * this function may call DEFSCREENSAVERPROC
  * incomplete
 */
 
@@ -75,10 +76,17 @@ LRESULT ScreenSaverProc(
     */
 
     case WM_LBUTTONDOWN:
+        break;
     case WM_MBUTTONDOWN:
+        break;
     case WM_RBUTTONDOWN:
+        break;
     case WM_KEYDOWN:
+        break;
     case WM_MOUSEMOVE:
+        break;
+    case WM_ACTIVATE:
+        break;
 
     /**
      * end of cases to terminate screensaver
@@ -94,9 +102,11 @@ LRESULT ScreenSaverProc(
         PostQuitMessage(0);
         break;
 
-    default:
-        return DefScreenSaverProc(hWnd, message, wParam, lParam);
     }
+/**
+ * defscreensaverproc processes any additional messages.
+*/
+    return DefScreenSaverProc(hWnd, message, wParam, lParam);
 
     return 0;
 }

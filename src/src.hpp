@@ -16,7 +16,7 @@
 #include <wchar.h>
 #include "settings/res.hpp"
 
-inline char* WideCharToChar(const wchar_t* wideStr);
+// inline char* WideCharToChar(const wchar_t* wideStr);
 
 // function declarations
 LRESULT ScreenSaverProc(
@@ -33,7 +33,7 @@ LRESULT DefScreenSaverProc(
     LPARAM lParam                 /**/
 );
 
-BOOL ScreenSaverConfigureDialog(
+BOOL WINAPI ScreenSaverConfigureDialog(
     HWND   hDlg,
     UINT   message,
     WPARAM wParam,
@@ -52,17 +52,6 @@ BOOL WINAPI RegisterDialogClasses(
 );
 
 
-
-/*settings*/
-// dialog procedure for settings function
-
-// BOOL CALLBACK SettingsDialogProc(
-//     HWND hwnd, 
-//     UINT message, 
-//     WPARAM wParam, 
-//     LPARAM lParam
-// );
-
 INT_PTR CALLBACK DialogProc(
     HWND hwnd, 
     UINT message, 
@@ -75,10 +64,10 @@ INT_PTR CALLBACK DialogProc(
  * helper functions
 */
 
-char* WideCharToChar(const wchar_t* wideStr)
-{
-    int size = WideCharToMultiByte(CP_UTF8, 0, wideStr, -1, NULL, 0, NULL, NULL);
-    char* buffer = new char[size];
-    WideCharToMultiByte(CP_UTF8, 0, wideStr, -1, buffer, size, NULL, NULL);
-    return buffer;
-}
+// char* WideCharToChar(const wchar_t* wideStr)
+// {
+//     int size = WideCharToMultiByte(CP_UTF8, 0, wideStr, -1, NULL, 0, NULL, NULL);
+//     char* buffer = new char[size];
+//     WideCharToMultiByte(CP_UTF8, 0, wideStr, -1, buffer, size, NULL, NULL);
+//     return buffer;
+// }

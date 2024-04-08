@@ -7,5 +7,5 @@ LRESULT DefScreenSaverProc(
     LPARAM lParam                 /**/
 )
 {
-    return DefWindowProc(hWnd, msg, wParam, lParam);
+    return DefWindowProcA(hWnd, msg, wParam, lParam);
 }

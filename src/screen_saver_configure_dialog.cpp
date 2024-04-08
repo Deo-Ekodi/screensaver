@@ -34,7 +34,7 @@ BOOL WINAPI ScreenSaverConfigureDialog(HWND hDlg, UINT message, WPARAM wParam, L
 /**/
                 case IDD_SETTINGS_DIALOG:
                     // Show the settings dialog
-                    DialogBox(GetModuleHandle(NULL), MAKEINTRESOURCE(IDD_SETTINGS_DIALOG), hDlg, DialogProc);
+                    DialogBoxA(GetModuleHandle(NULL), MAKEINTRESOURCE(IDD_SETTINGS_DIALOG), hDlg, DialogProc);
                     return TRUE;
 /**/
             }

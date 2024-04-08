@@ -17,7 +17,7 @@ INT_PTR CALLBACK DialogProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lPara
              * select font
             */
             CHOOSEFONT cf;
-            LOGFONT lf;
+            LOGFONTA lf;
             ZeroMemory(&cf, sizeof(CHOOSEFONT));
             ZeroMemory(&lf, sizeof(LOGFONT));
             cf.lStructSize = sizeof(CHOOSEFONT);
